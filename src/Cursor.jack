@@ -15,10 +15,15 @@ class Cursor{
         return this;
     }
     method void moveDirection(Vector direction){
-        do cleanCursor();
-        let position = position.add(direction);
-        do DrawUI.updatePosition(position);
-        do drawCursor();
+        var int newX, newY;
+        let newX = position.getX() + direction.getX();
+        let newY = position.getY() + direction.getY();
+        if ((newX > -1) & (newX < 513) & (newY > -1) & (newY < 225)){
+            do cleanCursor();
+            let position = position.add(direction);
+            do DrawUI.updatePosition(position);
+            do drawCursor();
+        }
         return;
     }
     method void drawCursor(){
